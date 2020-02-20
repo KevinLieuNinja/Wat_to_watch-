@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Show </title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+</head>
+</head>
+<body>
+    <div class="container">
+
+
+        <form action='create_show' method='POST'>
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form>
+                <div class="form-group">
+                  <label >Title</label>
+                  <input type="text" class="form-control" name='title' placeholder="New Show">
+                </div>
+                <div class="form-group">
+                  <label >Network</label>
+                  <input type="text" class='form-control' name='network' placeholder="Network">
+                </div>
+                <div class="form-group">
+                    <label >Release Date</label>
+                    <input type="int" class='form-control' name='release_date' placeholder="year">
+                  </div>
+                <div class="form-group">
+                  <label >Description</label>
+                  <textarea class="form-control" name='description' rows="3"></textarea>
+
+                  <input type="submit" value="Add This Show" class="btn btn-primary"/>
+                </div>
+              </form>
+
+            <a href="/">All Shows</a>
+        </form>
+
+
+    </div>
+</body>
+</html>

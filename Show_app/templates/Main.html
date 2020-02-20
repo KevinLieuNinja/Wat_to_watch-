@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the Shows</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-auto">
+
+            <table class="table table-hover table-dark">
+
+                <h1>Recommended Shows</h1>
+                <thead>
+                <tr>
+                    <th scope="col">Titles</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Dates</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">VIEW</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for Show in Shows %}
+                <tr>
+                    <td>{{Show.title}}</td>
+                    <td>{{Show.network}}</td>
+                    <td>{{Show.release_date}}</td>
+                    
+                    
+                    <td>
+                        <a href="edit_show/{{Show.id}}">Update</a>
+                    </td>
+                    <td>
+                        <a href="view_show/{{Show.id}}">View</a>
+                    </td>
+                    <td>
+                        <a href="delete_show/{{Show.id}}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="add_show">Add a New Show</a>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing the Show </title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container">
+
+
+        <form action='/update_show/{{show.id}}' method='POST'>
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label >Update Title:</label>
+                
+              <input name="title" type="text" class="form-control" placeholder="New title" value='{{show.title}}'>
+            </div>
+            <div class="form-group">
+              <label >Update Network:</label>
+              <input name='network' type="int" class='form-control' placeholder="Network" value="{{show.network}}">
+            </div>
+            <div class="form-group">
+                <label >Update Year:</label>
+                <input name='release_date' type="int" class='form-control' placeholder="Year" value="{{show.release_date}}">
+              </div>
+            <div class="form-group">
+              <label >Update Description:</label>
+              <textarea name='description' class="form-control"  rows="3" value='{{show.description}}'></textarea>
+            </div>
+            <input  type="submit" value="Update This Show" class="btn btn-primary"/>
+        </form>
+
+        {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="/">All Shows</a>
+    </div>
+</body>
+</html>
